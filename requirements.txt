@@ -1,0 +1,5 @@
+Flask
+Flask-MySQLdb
+pre-commit
+python-decouple
+python-dotenv
