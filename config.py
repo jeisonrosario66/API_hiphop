@@ -10,7 +10,7 @@ class DevelopmentConfig:
     DEBUG = True
     MYSQL_HOST = GETENV("HOST")
     MYSQL_USER = GETENV("USER")
-    MYSQL_PASSWORD = password = GETENV("PASSWORD")
+    MYSQL_PASSWORD = GETENV("PASSWORD")
     MYSQL_DB = GETENV("DATABASE")
 
 
