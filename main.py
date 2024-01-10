@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from flask import Flask
 from flask import jsonify
-
+from src.errors_handling.msg_exception import msg_exception
 from src.models.artist_controller import ArtistController
 
 
@@ -11,11 +11,11 @@ app = Flask(__name__)
 
 @app.errorhandler(404)
 def handle_not_found(e):
-    return jsonify({"error": "Not Found"}), 404
+    return jsonify({"Error 404": f"{msg_exception(handle_not_found,e)}"}), 404
 
 @app.errorhandler(500)
 def handle_internal_server_error(e):
-    return jsonify({"error": "Internal Server Error"}), 500
+    return jsonify({"Error 500": f"{msg_exception(handle_internal_server_error,e)}"}), 500
 
 
 if __name__ == "__main__":
