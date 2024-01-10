@@ -1,4 +1,5 @@
 Flask
-Flask-MySQLdb
+mysql-connector-python
 pre-commit
 python-decouple
+python-dotenv
