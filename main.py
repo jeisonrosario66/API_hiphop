@@ -4,7 +4,12 @@ from flask import jsonify
 from flask import request
 from flask_mysqldb import MySQL
 
-from config import config
+try:
+    from config import config
+except Exception as ex:
+    print(f"\n** Error: {ex}**\n")
+
+
 from src.models.artist_controller import ArtistController
 from src.models.artist_controller import ArtistRepository
 
