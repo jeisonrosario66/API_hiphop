@@ -1,17 +1,8 @@
 # -*- coding: utf-8 -*-
 from flask import Flask
 from flask import jsonify
-from flask import request
-from flask_mysqldb import MySQL
-
-try:
-    from config import config
-except Exception as ex:
-    print(f"\n** Error: {ex}**\n")
-
 
 from src.models.artist_controller import ArtistController
-from src.models.artist_controller import ArtistRepository
 
 
 # Flask app instantiation
@@ -22,11 +13,13 @@ app = Flask(__name__)
 def handle_not_found(e):
     return jsonify({"error": "Not Found"}), 404
 
+@app.errorhandler(500)
+def handle_internal_server_error(e):
+    return jsonify({"error": "Internal Server Error"}), 500
+
 
 if __name__ == "__main__":
-    connectionDB = MySQL(app)
-    artist_repository = ArtistRepository(connectionDB)
-    artist_controller = ArtistController(artist_repository)
+    artist_controller = ArtistController()
 
     # Route configuration using the controller
     app.route("/artists")(artist_controller.list_artists)
@@ -35,5 +28,4 @@ if __name__ == "__main__":
     app.route("/artist/<code>", methods=["PUT"])(artist_controller.update_artist)
     app.route("/artist/<code>", methods=["DELETE"])(artist_controller.delete_artist)
 
-    app.config.from_object(config["development"])
     app.run()
