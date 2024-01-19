@@ -52,7 +52,7 @@ class ArtistRepository:
             db_connection = create_db_connection()
             if db_connection:
                 with db_connection.cursor() as cursor:
-                    sql = "SELECT * FROM artist_table WHERE artist_key = (%s)"
+                    sql = "SELECT * FROM artist_table WHERE artist_aka = (%s)"
                     cursor.execute(sql, (code,))
                     data_got = cursor.fetchone()
 

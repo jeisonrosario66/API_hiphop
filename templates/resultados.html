@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+
+{% block body %}
+
+<div class="text-center" id="resultados">
+    <h4>resultados</h4>
+    {% if (my_data) %}
+    <section>
+        <p>Aka: <strong>{{ my_data.artist_aka }}</strong></p>
+        <p>Nombre: <strong>{{ my_data.artist_name }}</strong></p>
+        <p>Pais: <strong>{{ my_data.artist_country }}</strong></p>
+    </section>
+    {% else %}
+    <p>no Existe</p>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

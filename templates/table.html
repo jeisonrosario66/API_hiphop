@@ -1,0 +1,47 @@
+<div id="dynamic-content">
+<h1>response of request</h1>
+{% if (response) %}
+    <table>
+        <tr class="table_head">
+            <th>KEY</th>
+            <th>AKA</th>
+            <th>Full name</th>
+            <th>Date born</th>
+            <th>Deah date</th>
+            <th>Country</th>
+        </tr>
+        {% for row in response %}
+            <tr>
+                <td>{{ row.artist_key}}</td>
+                <td>{{ row.artist_aka}}</td>
+                <td>{{ row.artist_name}}</td>
+                <td>{{ row.artist_dateborn}}</td>
+                <td>{{ row.artist_deathdate}}</td>
+                <td>{{ row.artist_country}}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+{% endif %}
+
+{% if (response2) %}
+<table>
+    <tr class="table_head">
+        <th>KEY</th>
+        <th>AKA</th>
+        <th>Full name</th>
+        <th>Date born</th>
+        <th>Deah date</th>
+        <th>Country</th>
+    </tr>
+    <tr>
+        <td>{{ response2.artist_key}}</td>
+        <td>{{ response2.artist_aka}}</td>
+        <td>{{ response2.artist_name}}</td>
+        <td>{{ response2.artist_dateborn}}</td>
+        <td>{{ response2.artist_deathdate}}</td>
+        <td>{{ response2.artist_country}}</td>
+    </tr>
+</table>
+{% endif %}
+</div>
