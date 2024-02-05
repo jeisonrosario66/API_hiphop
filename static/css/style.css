@@ -3,55 +3,92 @@
     margin: 0;
     box-sizing: border-box;
 }
-
-.navbar-container {
-    display: flex;
+.none{
+    display: none;
 }
 
-.form_search {
+/* ********** navbar ********** */
+.navbar_container {
+    display: flex;
+}
+.navbar_search {
     margin: 13px 0px;
     display: flex;
     width: 100%;
     flex-direction: row;
     height: 40px;
 }
-.form_search input {
+.navbar_search input {
     width: 300px;
     margin: 0px 20px 0px 25px;
     border: 1px solid #000;
     border-radius: 7px;
-    
+    padding: 0 0 0 20px;
 }
-.form_search button {
-    border-radius: 7px;
-    width: 55px;
-    border: 0.1px solid #000;
-    cursor: pointer;
-    background: #fff;
-}
-
-.form_search button:hover {
-    background-color: #b3b3b3;
-    border: 0.5px solid #000;
-}
-
 .separator {
     width: 100%;
     height: 1px;
     background: #000;
     margin: 10px 0;
 }
+/* ********** navbar END ********** */
 
-.container_table {
+/* ********** container ********** */
+.container {
     padding: 0 0 0 25px;
 }
-.container_table h1 {
-    margin-bottom: 10px;
-}
+/* ********** container END ********** */
 
+/* ********** table list artists ********** */
 .table_head {
     background-color: beige;
-
-
 }
+.table_head th,
+.artist_td {
+    padding-right: 20px;
+}
+.row_table_list_artist {
+    cursor: pointer;
+}
+.row_table_list_artist:hover {
+    background-color: #e0e0e0;
+}
+/* Add to JavaScript event */
+.td_editable {
+    border-bottom: 1px solid #000;
+}
+/* ********** table list artists END ********** */
+
+/* ********** buttons ********** */
+.button_general {
+    border-radius: 7px;
+    width: 55px;
+    border: 0.1px solid #000;
+    cursor: pointer;
+    background: #fff;
+    margin-right: 10px;
+}
+.button_general:hover {
+    background-color: #b3b3b3;
+    border: 0.5px solid #000;
+}
+.button_update {
+    width: 150px;
+    margin-top: 20px;
+    padding: 5px 0px;
+}
+.button_active {
+    background-color: #5069d9;
+}
+/* ********** buttons END ********** */
+
+.response_output {
+    width: 500px;
+    background-color: aliceblue;
+    border-radius: 8px;
+    border: 1px solid #000;
+    margin-top: 20px;
+    padding: 5px;
+}
+
 
