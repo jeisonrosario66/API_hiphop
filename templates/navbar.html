@@ -1,10 +1,12 @@
-<nav class="navbar-container">
-<form action=""></form>
-        <form method="POST" action="{{ url_for('get_artist') }}" class="form_search" id="myForm">
-            <input name="search" type="search" placeholder="  Input Artist" aria-label="Search" id="searchInput">
-            <button type="submit">Search</button>
+<!-- 
+It can make requests through of the method "POST", the data of "search_input" are sent to the servidor executing the function 
+"artist_show", It is in the principal file "main.py" 
+ -->
+<nav class="navbar_container">
+        <form method="POST" action="{{ url_for('artist_show') }}" class="navbar_search" id="form_search_navbar">
+            <input name="search" type="search" placeholder="Input Artist aka" aria-label="Search" id="search_input">
+            <button class="button_general" type="submit">Search</button>
+            <button class="button_general" id="redirect_button_home" type="button">Home</button>
         </form>
 </nav>
-
 <div class="separator"></div>
-

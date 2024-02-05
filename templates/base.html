@@ -1,6 +1,16 @@
 <!-- templates/base.html -->
+<!-- 
+This is the template base from all the app
 
+Include:
+"block title" title base of the app web
 
+"block body" This block includes tree important elements; 
+    "block navbar" It is a "nav" element with a form for make requests of search; 
+    "block content" here will show the table content requested, it can change as may be; 
+    "script" it includes the code javascript for make request to server;
+ -->
+ <!DOCTYPE html>
 {% block head %}
 
     <title>
@@ -18,26 +28,6 @@
     {% endblock %}
     {% block content %} {% endblock %}
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
-        // Función para cargar dinámicamente el contenido al enviar el formulario
-        $(document).ready(function() {
-            $("#myForm").submit(function(event) {
-                event.preventDefault(); // Evitar el envío del formulario estándar
-
-                // Realizar una solicitud AJAX al servidor
-                $.ajax({
-                    url: "/artist_ajax",  // Cambia esto a la ruta adecuada en tu aplicación
-                    type: "POST",  // Cambia a "POST" para que coincida con el método de tu ruta en Flask
-                    data: { search: $("#searchInput").val() },  // Datos del formulario
-                    success: function(data) {
-                        // Actualizar el contenido dinámico
-                        $("#dynamic-content").html(data);
-                    }
-                });
-            });
-        });
-    </script>
+    <script defer src="{{ url_for('static', filename='js/ajax.js') }}" ></script>
 {% endblock %}
