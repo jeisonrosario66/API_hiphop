@@ -21,24 +21,21 @@ class ArtistController:
         response_got = self.artist_repository.list_artists()
         return response_got
 
-    def get_artist(self):
-        """Manage the  GET request to get  details of the artist
+    def get_artist(self, artist_name):
+        """Manage the request to get  details of the artist
 
         Args:
-            code (int): Primary key of artist
+            artist_name (str): "Aka" of artist, it server for key for the query
+            Example: "SELECT * FROM artist_table WHERE artist_aka = artist_name"        
 
         Returns:
             Dictionary: artist data got
         """
-        # "search" it is attribute of the element "input" in "navbar.html"
+        # "search" it is an attribute of the element "input" in "navbar.html or the artist name obtained event click in the table row
         # this receives the data necessary to make the request
-        query_artist_aka = request.form["search"]
-        response = self.artist_repository.get_artist(query_artist_aka)
+        response = self.artist_repository.get_artist(artist_name)
         if not response == None:
-            print(response)
             return response
-        elif response == None:
-            print("vacio")
 
     def add_artist(self):
         """Manage the POST request to add  new artist
@@ -49,12 +46,13 @@ class ArtistController:
         response = self.artist_repository.add_artist()
         return jsonify({"Response": response})
 
-    def update_artist(self, code):
+    def update_artist(self, code, jsonData):
         # Manage the PUT request to update the details an artist
-        response = self.artist_repository.update_artist(code)
-        return jsonify({"Response": response})
+        response = self.artist_repository.update_artist(code, jsonData)
+        return response
 
     def delete_artist(self, code):
         # Manage the DELETE request to delete an artist
         response = self.artist_repository.delete_artist(code)
+        
         return jsonify({"Response": response})

@@ -43,7 +43,7 @@ class ArtistRepository:
         """Logic to get the details the an artist from the database
 
         Args:
-            code (int): Primary key of artist
+            code (str): artist_aka of artist
 
         Returns:
             Dictionary: artist data got
@@ -105,7 +105,7 @@ class ArtistRepository:
         finally:
             close_db_connection(db_connection)
 
-    def update_artist(self, code):
+    def update_artist(self, code, jsonData):
         """Logic to update the details an artist in the database
 
         Args:
@@ -114,17 +114,35 @@ class ArtistRepository:
         Returns:
             Returns: confirmation 'UPDATE' or exception
         """
+        artist_aka = jsonData["artist_aka"]
+        artist_name = jsonData["artist_name"]
+        artist_dateborn = jsonData["artist_dateborn"]
+        artist_deathdate = jsonData["artist_deathdate"]
+        artist_country = jsonData["artist_country"]
+
+        
+        if artist_dateborn == "":
+            artist_dateborn = None
+            
+        if artist_deathdate == "":
+            artist_deathdate = None
+        
         try:
             db_connection = create_db_connection()
             if db_connection:
                 with db_connection.cursor() as cursor:
-                    sql = "UPDATE artist_table SET artist_aka = (%s) WHERE artist_key = (%s)"
-                    value = (request.json["artist_aka"], (code,))
+                    sql = """UPDATE artist_table SET artist_aka = (%s),
+                                    artist_name = (%s),
+                                    artist_dateborn = (%s),
+                                    artist_deathdate = (%s),
+                                    artist_country = (%s)
+                                    WHERE artist_key = (%s)"""
+                    value = (artist_aka, artist_name, artist_dateborn, artist_deathdate, artist_country, code)
                     cursor.execute(sql, value)
                     db_connection.commit()
-                    return "Artist updated"
+                    return {"response": "Artist updated"}
         except Exception as ex:
-            return msg_exception(self.update_artist, ex)
+            return {"response": msg_exception(self.update_artist, ex)}
         finally:
             close_db_connection(db_connection)
 
