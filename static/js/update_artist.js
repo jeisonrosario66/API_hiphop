@@ -82,7 +82,7 @@ function btnConfirmFunction(responseServidor){
 function ajax_btnConfirm(){
     $.ajax({
         headers: {'Content-Type': 'application/json'},
-        url: "/artist_updaste",
+        url: "/artist_update",
         type: "PUT",
         data: JSON.stringify(jsonDataUpdate),
         success: function(response) {

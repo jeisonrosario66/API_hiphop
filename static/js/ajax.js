@@ -14,11 +14,46 @@ function requestAjax(dataSent, url) {
             $("#search_input").val("");
         },
         error: function(error) {
-            console.error('Error in the GET request:', error);
+            console.error('Error in the POST request:', error);
         }
     });
 };
 // ---------------------------------------------------------------------------------------------
+
+// Build new url
+function buildUrl(artistName) {
+    nameUrlFormat = artistName;
+    for(let i = 0; i < artistName.length; i++) {
+      if (artistName[i] === " ") {
+        nameUrlFormat = nameUrlFormat.replace(" ","_");
+      };
+    };
+    let newUrl = urlArtist + "/" + encodeURIComponent(nameUrlFormat); 
+    window.history.pushState({ path: newUrl }, '', newUrl); // Update the URL in browser
+};
+// ---------------------------------------------------------------------------------------------
+
+// Change "DOM" page according to change the url
+window.addEventListener('popstate', function(event) {
+    let state = window.history.state;
+    $.ajax({
+        url: window.location.pathname,
+        // The header is very import for execute the function correct on the server side
+        headers: {
+            'X-Requested-With': 'popstate_event'
+        },
+        type: "GET",
+        success: function(response) {
+            $("#dynamic-content").html(response);
+            $("#search_input").val("");
+        },
+        error: function(error) {
+            console.error('Error in the GET request:', error);
+        }
+    });
+});
+// ---------------------------------------------------------------------------------------------
+
 // Function to handle the submit form
 function handleFormSubmit(event) {
     event.preventDefault(); // avoid the form submit
@@ -27,8 +62,10 @@ function handleFormSubmit(event) {
         // make an AJAX request to the server
         let searchInput = $("#search_input").val();
         requestAjax(searchInput, urlArtist);
+        buildUrl(searchInput)
     }
 };
+// ---------------------------------------------------------------------------------------------
 
 // Will handle of managed the form submit, it will only do it after uploading the entire document
 $(document).ready(function() {
@@ -40,13 +77,13 @@ btnHome.addEventListener("click", function() {
 });
 // ---------------------------------------------------------------------------------------------
 
-// ---------------------------------------------------------------------------------------------
 // Add the click event to the each row in the table
 for (const row of rowsTable) {
     row.addEventListener("click", function() {
         // Get data from the row
         let artistAka = row.cells[1].textContent;
         requestAjax(artistAka, urlArtist);
+        buildUrl(artistAka);
     });
 };
 // ---------------------------------------------------------------------------------------------
