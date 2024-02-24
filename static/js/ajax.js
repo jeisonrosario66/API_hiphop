@@ -10,6 +10,7 @@ function requestAjax(dataSent, url) {
         data: { search: dataSent }, // This data is the artist name
         success: function(response) {
             // Update the dynamic content
+            location.reload()
             $("#dynamic-content").html(response);
             $("#search_input").val("");
         },
@@ -35,7 +36,6 @@ function buildUrl(artistName) {
 
 // Change "DOM" page according to change the url
 window.addEventListener('popstate', function(event) {
-    let state = window.history.state;
     $.ajax({
         url: window.location.pathname,
         // The header is very import for execute the function correct on the server side
@@ -44,8 +44,10 @@ window.addEventListener('popstate', function(event) {
         },
         type: "GET",
         success: function(response) {
+            location.reload()
             $("#dynamic-content").html(response);
             $("#search_input").val("");
+
         },
         error: function(error) {
             console.error('Error in the GET request:', error);
@@ -78,12 +80,15 @@ btnHome.addEventListener("click", function() {
 // ---------------------------------------------------------------------------------------------
 
 // Add the click event to the each row in the table
-for (const row of rowsTable) {
-    row.addEventListener("click", function() {
-        // Get data from the row
-        let artistAka = row.cells[1].textContent;
-        requestAjax(artistAka, urlArtist);
-        buildUrl(artistAka);
-    });
+function handleClickRow(param) {
+    for (const row of param) {
+        row.addEventListener("click", function() {
+            // Get data from the row
+            let artistAka = row.cells[1].textContent;
+            requestAjax(artistAka, urlArtist);
+            buildUrl(artistAka);
+        });
+    };
 };
+handleClickRow(rowsTable);
 // ---------------------------------------------------------------------------------------------
