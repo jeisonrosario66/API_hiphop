@@ -30,7 +30,6 @@ def list_artists_show():
     response_got = artist_controller.list_artists()
 
     if request.method == "GET" :
-        print("xx")
         if requested_with == "popstate_event": # Value of header
             return render_template("table.html",response = response_got)
         else:
