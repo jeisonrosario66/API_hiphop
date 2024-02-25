@@ -46,13 +46,13 @@ def artist_show2(code):
         It is received in this format "artist_name", then it is replace "_" -> " "
         Resulting in "artist name" for make query at the database
 
-
     Returns:
        template flask
     """
     requested_with = request.headers.get('X-Requested-With')
 
     artist_name = code
+    # This block will format the "artist name" a format requered
     for i in code:
         if i == "_":
             artist_name = artist_name.replace("_", " ")
@@ -64,12 +64,11 @@ def artist_show2(code):
             # If the header "X-Requested-With" is equal "popstate_event"
             # Return only the template "table.html"
             return render_template("table.html",response2 = response_got)
-            
         else:
             if not response_got == None:
                 return render_template("artist_table.html",response3 = response_got)
             else:
-                return render_template("artist_not_found.html")
+                return render_template("artist_not_found.html", artist_name = artist_name)
 
 @app.route("/artist", methods=["POST"])
 def artist_show():
@@ -79,7 +78,7 @@ def artist_show():
         if not response_got == None:
             return render_template("table.html",response2 = response_got)
         else:
-            return render_template("artist_not_found.html")
+            return render_template("artist_not_found.html", artist_name = artist_name)
 
 @app.route("/artist_update", methods=["PUT"])
 def artist_update():
