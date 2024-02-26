@@ -93,6 +93,7 @@ function btnConfirmFunction(responseServidor) {
 
   for (let property in jsonDataOriginal) {
     if (
+      // If the properties have the same name
       jsonDataOriginal.hasOwnProperty(property) &&
       jsonDataUpdate.hasOwnProperty(property)
     ) {
