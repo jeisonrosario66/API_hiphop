@@ -1,16 +1,17 @@
 //Update artist from backed, capture event
 const btnHome = document.getElementById("redirect_button_home");
+const btnAddArtist = document.getElementById("add_new_artist");
 const urlArtist = "/artist"; // url
+const urlAddArtist = "/add_artist"; // url
 const rowsTable = document.getElementsByClassName("row_table_list_artist");
 
-function requestAjax(dataSent, url) {
+function requestAjax(dataSent, url, type) {
   $.ajax({
     url: url,
-    type: "POST",
+    type: type,
     data: { search: dataSent }, // This data is the artist name
     success: function (response) {
       // Update the dynamic content
-      location.reload();
       $("#dynamic-content").html(response);
       $("#search_input").val("");
     },
@@ -21,11 +22,11 @@ function requestAjax(dataSent, url) {
 }
 // ---------------------------------------------------------------------------------------------
 
-// Build new url
-function buildUrl(artistName) {
-  nameUrlFormat = artistName;
-  for (let i = 0; i < artistName.length; i++) {
-    if (artistName[i] === " ") {
+// Build new artist url
+function buildArtistUrl(code) {
+  nameUrlFormat = code;
+  for (let i = 0; i < code.length; i++) {
+    if (code[i] === " ") {
       nameUrlFormat = nameUrlFormat.replace(" ", "_");
     }
   }
@@ -44,7 +45,8 @@ window.addEventListener("popstate", function (event) {
     },
     type: "GET",
     success: function (response) {
-      location.reload();
+
+
       $("#dynamic-content").html(response);
       $("#search_input").val("");
     },
@@ -62,8 +64,10 @@ function handleFormSubmit(event) {
   if ($("#search_input").val() !== "") {
     // make an AJAX request to the server
     let searchInput = $("#search_input").val();
-    requestAjax(searchInput, urlArtist);
-    buildUrl(searchInput);
+    requestAjax(searchInput, urlArtist, "POST");
+    
+    buildArtistUrl(searchInput);
+    location.reload();
   }
 }
 // ---------------------------------------------------------------------------------------------
@@ -84,10 +88,20 @@ function handleClickRow(param) {
     row.addEventListener("click", function () {
       // Get data from the row
       let artistAka = row.cells[1].textContent;
-      requestAjax(artistAka, urlArtist);
-      buildUrl(artistAka);
+      requestAjax(artistAka, urlArtist, "POST");
+      buildArtistUrl(artistAka);
     });
   }
 }
 handleClickRow(rowsTable);
+// ---------------------------------------------------------------------------------------------
+
+// Add new artist
+btnAddArtist.addEventListener("click", function() {
+  window.history.pushState("", "", "add_artist"); // Update the URL in browser
+  requestAjax(null, urlAddArtist,"GET")
+  location.reload();
+
+});
+
 // ---------------------------------------------------------------------------------------------
