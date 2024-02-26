@@ -73,7 +73,7 @@ class ArtistRepository:
         finally:
             close_db_connection(db_connection)
 
-    def add_artist(self):
+    def add_artist(self, data_artist):
         """Logic to add a new artist in the database
         
         Returns: confirmation 'INSERT' or exception
@@ -89,13 +89,20 @@ class ArtistRepository:
                     artist_deathdate,
                     artist_country)
                     VALUES (%s, %s, %s, %s, %s)"""
+
+                    artist_dateborn = data_artist["artist_dateborn"]
+                    if artist_dateborn ==  "":
+                        artist_dateborn = None
+                    artist_deathdate = data_artist["artist_deathdate"]
+                    if artist_deathdate ==  "":
+                        artist_deathdate = None
                     value = (
                         # 'artist key' is added when data is inserted into the database
-                        request.json["artist_aka"],
-                        request.json["artist_name"],
-                        request.json["artist_dateborn"],
-                        request.json["artist_deathdate"],
-                        request.json["artist_country"],
+                        data_artist["artist_aka"],
+                        data_artist["artist_name"],
+                        artist_dateborn,
+                        artist_deathdate,
+                        data_artist["artist_country"],
                     )
                     cursor.execute(sql, value)
                     db_connection.commit()
@@ -140,9 +147,9 @@ class ArtistRepository:
                     value = (artist_aka, artist_name, artist_dateborn, artist_deathdate, artist_country, code)
                     cursor.execute(sql, value)
                     db_connection.commit()
-                    return {"response": "Artist updated"}
+                    return "Artist updated"
         except Exception as ex:
-            return {"response": msg_exception(self.update_artist, ex)}
+            return msg_exception(self.update_artist, ex)
         finally:
             close_db_connection(db_connection)
 
