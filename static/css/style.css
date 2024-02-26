@@ -34,6 +34,11 @@
 /* ********** navbar END ********** */
 
 /* ********** container ********** */
+.space {
+    width: 100vw;
+    height: 30px;
+}
+
 .container {
     padding: 0 0 0 25px;
 }
