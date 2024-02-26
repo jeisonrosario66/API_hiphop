@@ -37,14 +37,18 @@ class ArtistController:
         if not response == None:
             return response
 
-    def add_artist(self):
+    def add_artist(self, data_artist):
         """Manage the POST request to add  new artist
 
         Returns:
             json: confirmation 'insert' or exception
         """
-        response = self.artist_repository.add_artist()
-        return jsonify({"Response": response})
+        response = self.artist_repository.add_artist(data_artist)
+    
+        if response == "Artist added":
+            return response
+        else:
+            return f"'{data_artist['artist_aka']}' already exists"
 
     def update_artist(self, code, jsonData):
         # Manage the PUT request to update the details an artist

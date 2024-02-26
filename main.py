@@ -88,6 +88,35 @@ def artist_update():
             artist_key = artist_data["artist_key"]
             response_got = artist_controller.update_artist(artist_key, artist_data)
             return  "response_got"
+        
+@app.route("/add_artist", methods=["GET", "POST"])
+def add_artist():
+    requested_with = request.headers.get('X-Requested-With')
+  
 
+    if request.method == "GET":
+        if requested_with == "popstate_event":
+            artist_name = str(request.args.keys())
+            artist_name = artist_name.replace("dict_keys(['{", "")
+            artist_name = artist_name.replace('"artistData":"', "")
+            artist_name = artist_name.replace("'])", "")
+            artist_name = artist_name.replace('"}', "")
+            response_got = artist_controller.get_artist(artist_name)
+            if response_got != None:
+                return f"'{artist_name}' already exists"
+            else:
+                return f"'{artist_name}' available"
+            
+        else:
+            return render_template("add_artist.html")
+        
+
+    elif request.method == "POST":
+        new_artist_data = request.json["artistData"]
+        response_got = artist_controller.add_artist(new_artist_data)
+        print(response_got)
+        return response_got
+        pass
+    
 if __name__ == "__main__":
     app.run()

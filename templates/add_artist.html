@@ -1,0 +1,49 @@
+<!-- templates/ad__artist.html -->
+
+{% extends 'base.html' %}
+<!-- added text to "block title" base   -->
+{% block title %}
+{{ super() }}
+Add artist
+{% endblock %}
+
+<!-- templates/add_artist.html -->
+{% block content %}
+<div class="container dynamic-content">
+    <h1>Add new artist details</h1>
+    <div class="space"></div>
+    <table>
+        <tbody>
+            <tr class="table_head">
+                <th>KEY</th>
+                <th>AKA</th>
+                <th>Full name</th>
+                <th>Date born</th>
+                <th>Deah date</th>
+                <th>Country</th>
+            </tr>
+            <tr>
+                <td class="artist_td td_editable" id="artistKey" style="border-bottom: 0">***</td>
+                <td class="artist_td td_editable" id="artistAka" contenteditable="true">None</td>
+                <td class="artist_td td_editable" id="artistName"contenteditable="true">None</td>
+                <td class="artist_td td_editable" id="artist_date_born"contenteditable="true">
+                    <input id="input_date_born" type="date">
+                </td>
+                <td class="artist_td td_editable" id="artist_date_death"contenteditable="true">
+                    <input id="input_date_death" type="date">
+                </td>
+                <td class="artist_td td_editable" id="artistCountry"contenteditable="true">None</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button type="button" class="button_general button_update" id="btn_verify_add">Verify changes</button>
+    <button type="button" class="button_general button_update" id="btn_confirm_add">Confirm create</button>
+    <div class="response_output" id="response_output">
+        <h4>Output</h4>
+        <br>
+        <div id="result_changes"></div>
+    </div>
+</div>
+<script defer src="{{ url_for('static', filename='js/add_artist.js') }}"></script>
+{% endblock %}
