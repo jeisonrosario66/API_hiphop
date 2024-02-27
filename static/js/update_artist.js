@@ -119,9 +119,10 @@ function ajax_btnConfirm() {
     url: "/artist_update",
     type: "PUT",
     data: JSON.stringify(jsonDataUpdate),
+
     success: function (response) {
       let responseMessage = "Update artist OK";
-      btnConfirmFunction(responseMessage);
+      btnConfirmFunction(response);
     },
     error: function (error) {
       btnConfirmFunction("Error in the PUT request");
@@ -163,6 +164,7 @@ btnUpdate.addEventListener("click", function () {
       artist_country: rowCell[5].textContent,
     };
     btnUpdate.textContent = "Cancel edit";
+    jsonDataUpdate = createJsonData(); // create json data
     btnEditState = true;
   } else {
     // Delete inputs type data inside table cell
@@ -191,10 +193,6 @@ btnVerify.addEventListener("click", function () {
 });
 
 btnConfirm.addEventListener("click", function () {
-  if (isEmtpy(jsonDataUpdate)) {
-    jsonDataUpdate = createJsonData();
-    ajax_btnConfirm();
-  } else {
-    ajax_btnConfirm();
-  }
+  jsonDataUpdate = createJsonData();
+  ajax_btnConfirm();
 });

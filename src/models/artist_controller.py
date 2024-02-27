@@ -52,7 +52,15 @@ class ArtistController:
 
     def update_artist(self, code, jsonData):
         # Manage the PUT request to update the details an artist
+        expected_response = "Artist updated"
         response = self.artist_repository.update_artist(code, jsonData)
+        artist_aka = jsonData["artist_aka"]
+        if response == expected_response:
+            # response = f"'{artist_aka}': Aka Available"
+            response = f"Artist update"
+        else:
+            response = f"'{artist_aka}': Already exist!"
+
         return response
 
     def delete_artist(self, code):

@@ -86,14 +86,14 @@ def artist_update():
         if request.is_json:
             artist_data = request.get_json()
             artist_key = artist_data["artist_key"]
+            
             response_got = artist_controller.update_artist(artist_key, artist_data)
-            return  "response_got"
+            return response_got
         
 @app.route("/add_artist", methods=["GET", "POST"])
 def add_artist():
     requested_with = request.headers.get('X-Requested-With')
   
-
     if request.method == "GET":
         if requested_with == "popstate_event":
             artist_name = str(request.args.keys())

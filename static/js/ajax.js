@@ -98,10 +98,11 @@ handleClickRow(rowsTable);
 
 // Add new artist
 btnAddArtist.addEventListener("click", function() {
-  window.history.pushState("", "", "add_artist"); // Update the URL in browser
+  // Get the current path
+  let newUrl = "/add_artist";
+  
+  window.history.pushState("", "", newUrl); // Update the URL in browser
   requestAjax(null, urlAddArtist,"GET")
   location.reload();
-
 });
-
 // ---------------------------------------------------------------------------------------------
