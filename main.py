@@ -114,9 +114,7 @@ def add_artist():
     elif request.method == "POST":
         new_artist_data = request.json["artistData"]
         response_got = artist_controller.add_artist(new_artist_data)
-        print(response_got)
         return response_got
-        pass
     
 if __name__ == "__main__":
     app.run()

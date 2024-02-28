@@ -82,7 +82,7 @@ class ArtistRepository:
             db_connection = create_db_connection()
             if db_connection:
                 with db_connection.cursor() as cursor:
-                    sql = """INSERT INTO hip_hop_database.artist_table
+                    sql = """INSERT artist_table
                     (artist_aka,
                     artist_name,
                     artist_dateborn,

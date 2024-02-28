@@ -3,8 +3,6 @@ from mysql.connector import Error
 import os
 from src.errors_handling.msg_exception import msg_exception
 
-# Load environment variables
-
 def create_db_connection():
     """
     Returns:
@@ -25,4 +23,3 @@ def create_db_connection():
 def close_db_connection(connection):
     if connection:
         connection.close()
-    
