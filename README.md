@@ -1,9 +1,11 @@
 
 # API_hiphop
 
-* It is a project with the objective of collect and organize much data the music RAP to expose it 
+* It is a project with the objective of collect and organize much data the music RAP to expose it. In this first stage will show only data about artist
 
-**Only developing local for now**
+**App in production state**
+
+**LINK:** **http://jeisonrosariodev.pythonanywhere.com/**
 ## Requirements 
 
 #### DataBase
@@ -27,43 +29,37 @@ CREATE TABLE `artist_table` (
 #### Environment Variables
 To run this project, you will need to add the following environment variables to your `.env` file
 
-`HOST`
-
-`USER`
-
-`PASSWORD`
-
-`DATA`
-## API Reference
-* All methods return the data in the format 'json'
-
-#### Get all items
-* This method makes a query and return all items the database
-
-```http
-  GET /api/artists
 ```
-![captura](https://github.com/jeisonrosario66/API_hiphop/assets/96961824/742f944c-61c4-4d7c-a005-76c9402fb2e2)
-
-#### Get item
-* This method makes a query and return an only item the database
-```http
-  GET /api/artist/${key}
+HOST=hostname
+USER=user
+PASSWORD=pass
+DATA=database_name
 ```
-![captura](https://github.com/jeisonrosario66/API_hiphop/assets/96961824/dacf04ca-9618-4b6f-83e5-e75872ad6ec4)
+## Front end of the app
+* This screen show the data artists in table format, each row in it has in click event, when pressed on a row make request to server and it return a new template with the data required
 
-#### Post item
-* This method makes a query of post an item a the database, the dataset (data) must be in formato 'json'
+![1](https://github.com/jeisonrosario66/API_hiphop/assets/96961824/90d26d66-173f-484c-af90-fa121822154a)
 
+#### Get only artist
+* Here show the data required and besides functions for modified the data as required
+
+![2](https://github.com/jeisonrosario66/API_hiphop/assets/96961824/94425d6e-8b53-489f-9c01-ab72953922c1)
+
+
+![3](https://github.com/jeisonrosario66/API_hiphop/assets/96961824/3aa84bb4-c773-4637-a91e-4f9f1c5ba294)
+
+* You can too to access from the url, for example: 
 ```http
-  POST /api/artist/${data}
+  /artist/artist_name
 ```
-![captura](https://github.com/jeisonrosario66/API_hiphop/assets/96961824/a183bafa-717c-47d2-85d9-a285b16bb518)
-
-
-### Delete item
-
-* This method makes a query of delete a item
 ```http
-  POST /api/artist/${key}
+  /add_artist
 ```
+
+#### Add new artist
+* This screen make the "insert into". Through of "output" windows you will can se the request state
+![4](https://github.com/jeisonrosario66/API_hiphop/assets/96961824/4dd325b0-d254-4b59-907e-e17dd612c736)
+
+* "output" too has a method of verify avoid entities duplicate on the database
+
+![5](https://github.com/jeisonrosario66/API_hiphop/assets/96961824/94f08f08-4db8-4af5-a712-9ed07f3c75c4)
