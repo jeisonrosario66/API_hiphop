@@ -1,0 +1,16 @@
+<!-- templates/artist_not_found.html -->
+
+{% extends 'base.html' %}
+<!-- added text to "block title" base   -->
+{% block title %}
+{{ super() }}
+Artist not found
+{% endblock %}
+
+{% block content %}
+<div class="container dynamic-content">
+    <h1>Response of request</h1>
+    <h3>Artist not found: {{artist_name}}</h3>
+    <h4></h4>
+</div>
+{% endblock %}

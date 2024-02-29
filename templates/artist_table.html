@@ -1,0 +1,19 @@
+<!-- templates/artist_table.html -->
+
+{% extends 'base.html' %}
+<!-- added text to "block title" base   -->
+{% block title %}
+{{ super() }}
+Artist
+{% endblock %}
+
+<!-- "block content" It replaces the "block content" of the template base "base.html" and draw this new content "table.html" -->
+{% block content %}
+<div class="container">
+
+    {% block table %}
+    {% include 'table.html' %}
+    {% endblock %}
+
+</div>
+{% endblock %}

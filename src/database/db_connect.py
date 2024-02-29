@@ -1,11 +1,7 @@
 import mysql.connector
 from mysql.connector import Error
-from dotenv import load_dotenv
 import os
 from src.errors_handling.msg_exception import msg_exception
-
-# Load environment variables
-load_dotenv()
 
 def create_db_connection():
     """
@@ -27,4 +23,3 @@ def create_db_connection():
 def close_db_connection(connection):
     if connection:
         connection.close()
-    

@@ -1,0 +1,33 @@
+<!-- templates/base.html -->
+<!-- 
+This is the template base from all the app
+
+Include:
+"block title" title base of the app web
+
+"block body" This block includes tree important elements; 
+    "block navbar" It is a "nav" element with a form for make requests of search; 
+    "block content" here will show the table content requested, it can change as may be; 
+    "script" it includes the code javascript for make request to server;
+ -->
+ <!DOCTYPE html>
+{% block head %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}Hip Hop | {% endblock %}
+    </title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+{% endblock %}
+
+{% block body %}
+
+    {% block navbar %}
+        {% include 'navbar.html' %}
+    {% endblock %}
+    {% block content %} {% endblock %}
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script defer src="{{ url_for('static', filename='js/ajax.js') }}" ></script>
+{% endblock %}
