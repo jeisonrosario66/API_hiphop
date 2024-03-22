@@ -3,10 +3,9 @@ It can make requests through of the method "POST", the data of "search_input" ar
 "artist_show", It is in the principal file "main.py" 
  -->
 <nav class="navbar_container">
-    <form method="POST" action="{{ url_for('artist_show') }}" class="navbar_search" id="form_search_navbar">
-        <input name="search" type="search" placeholder="Input Artist aka" aria-label="Search" id="search_input">
-        <button class="button_general" type="submit">Search</button>
-        <button class="button_general" type="button" id="redirect_button_home" >Home</button>
-    </form>
+<div id="logo_container" class="logo_container">
+    <img id="logo" src="{{ url_for('static', filename='logo.png') }}" alt="">
+    <h3>HH Database</h3>
+</div>
+<h4 id="add_new_artist">Add Artist</h4>
 </nav>
-<div class="separator"></div>
