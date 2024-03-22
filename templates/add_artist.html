@@ -9,12 +9,13 @@ Add artist
 
 <!-- templates/add_artist.html -->
 {% block content %}
-<div class="container dynamic-content">
-    <h1>Add new artist details</h1>
+<div id="dynamic-content" class="container add_artist_container ">
+    <h1 class="text-center" id="title_h1">Add New Artist</h1>
+    <div style="width: 250px;" class="separator"></div>
     <div class="space"></div>
-    <table>
-        <tbody class="table_body_responsive">
-            <tr class="table_head th_table_responsive">
+    <table id="myTable" class="display">
+        <thead>
+            <tr>
                 <th>KEY</th>
                 <th>AKA</th>
                 <th>Full name</th>
@@ -22,7 +23,9 @@ Add artist
                 <th>Deah date</th>
                 <th>Country</th>
             </tr>
-            <tr class="td_table_responsive">
+        </thead>
+        <tbody>
+            <tr>
                 <td class="artist_td td_editable" id="artistKey" style="border-bottom: 0">***</td>
                 <td class="artist_td td_editable" id="artistAka" contenteditable="true">None</td>
                 <td class="artist_td td_editable" id="artistName"contenteditable="true">None</td>
@@ -44,6 +47,16 @@ Add artist
         <br>
         <div id="result_changes"></div>
     </div>
+
+    <style>
+        #myTable_info, 
+        .dt-layout-row .dt-paging, 
+        .dt-layout-row .dt-layout-cell,
+        .dt-layout-row .dt-length,
+        .dt-layout-row .dt-search{
+            display: none;
+        }
+    </style>
 </div>
 <script defer src="{{ url_for('static', filename='js/add_artist.js') }}"></script>
 {% endblock %}
