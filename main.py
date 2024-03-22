@@ -22,13 +22,17 @@ def handle_internal_server_error(e):
 def handle_not_found405(e):
     return jsonify({"Error 405": f"{msg_exception(handle_internal_server_error,e)}"}), 405
 
+@app.route('/favicon.ico')
+def favicon():
+    return app.send_static_file('favicon.ico')
+
+
 # ---------------------------------------------------------------------------------------------
 @app.route("/", methods=["GET", "POST"])
 def list_artists_show():
     # "requested_with" will get the header from the request
     requested_with = request.headers.get('X-Requested-With')
     response_got = artist_controller.list_artists()
-
     if request.method == "GET" :
         if requested_with == "popstate_event": # Value of header
             return render_template("table.html",response = response_got)
