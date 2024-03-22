@@ -38,15 +38,16 @@ DATA=database_name
 ## Front end of the app
 * This screen show the data artists in table format, each row in it has in click event, when pressed on a row make request to server and it return a new template with the data required
 
-![1](https://github.com/jeisonrosario66/API_hiphop/assets/96961824/90d26d66-173f-484c-af90-fa121822154a)
+![1](https://github.com/jeisonrosario66/API_hiphop/assets/96961824/6c2c7a37-0474-40d4-8e1b-82ee96e633f4)
 
 #### Get only artist
 * Here show the data required and besides functions for modified the data as required
 
-![2](https://github.com/jeisonrosario66/API_hiphop/assets/96961824/94425d6e-8b53-489f-9c01-ab72953922c1)
+![2](https://github.com/jeisonrosario66/API_hiphop/assets/96961824/75adf39c-e02a-44bf-b89c-af9d8e788a7c)
 
 
-![3](https://github.com/jeisonrosario66/API_hiphop/assets/96961824/3aa84bb4-c773-4637-a91e-4f9f1c5ba294)
+
+![3](https://github.com/jeisonrosario66/API_hiphop/assets/96961824/94bf468f-a932-43f0-9f69-d2512a2c1e06)
 
 * You can too to access from the url, for example: 
 ```http
@@ -58,8 +59,8 @@ DATA=database_name
 
 #### Add new artist
 * This screen make the "insert into". Through of "output" windows you will can se the request state
-![4](https://github.com/jeisonrosario66/API_hiphop/assets/96961824/4dd325b0-d254-4b59-907e-e17dd612c736)
+![4](https://github.com/jeisonrosario66/API_hiphop/assets/96961824/7c41c9d5-3a96-40ab-9335-95a2d69cf734)
 
 * "output" too has a method of verify avoid entities duplicate on the database
 
-![5](https://github.com/jeisonrosario66/API_hiphop/assets/96961824/94f08f08-4db8-4af5-a712-9ed07f3c75c4)
+![5](https://github.com/jeisonrosario66/API_hiphop/assets/96961824/55fcfdc7-899f-4443-a781-e808a817efda)
