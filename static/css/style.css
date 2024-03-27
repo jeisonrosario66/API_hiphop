@@ -11,6 +11,10 @@
     font-family: 'Quicksand', sans-serif;
 }
 
+.dataTable thead tr th,
+.dataTable tbody tr td{
+    height: 40px;
+}
 
 .none {
     display: none;
@@ -146,6 +150,8 @@ div.dt-container div.dt-layout-row  {
     padding: 5px;
 }
 
+
+
 @media only screen and (max-width: 304px) {
     .separator {
         width: 100%;
@@ -154,7 +160,6 @@ div.dt-container div.dt-layout-row  {
 
 @media only screen and (max-width: 340px) {
     * {
-        background-color: #8ade68;
         overflow: auto;
     }   
     
@@ -165,12 +170,17 @@ div.dt-container div.dt-layout-row  {
     }
 }
 
-@media only screen and (min-width: 413px) and (max-width: 470px) {
+@media only screen and (max-width: 470px) {
+    
+
     #table_container #myTable {
-        width: 409px !important;
+        width: 260px !important;
     }
-    * {
-        background-color: aqua;
+    #table_response_cell_born_th,
+    #table_response_cell_death_th,
+    #table_response_cell_born_td,
+    #table_response_cell_death_td {
+        display: none;
     }
 }
 
@@ -178,16 +188,11 @@ div.dt-container div.dt-layout-row  {
     #table_container #myTable {
         width: 450px !important;
     }
-    * {
-        background-color: rgb(173, 86, 217);
-    }
 }
 
 @media only screen and (min-width: 560px) and (max-width: 670px) {
     #table_container #myTable {
         width: 500px !important;
     }
-    * {
-        background-color: rgb(179, 13, 13);
-    }
 }
+

@@ -40,23 +40,17 @@ Add artist
         </tbody>
     </table>
 
-    <button type="button" class="button_general button_update" id="btn_verify_add">Verify changes</button>
-    <button type="button" class="button_general button_update" id="btn_confirm_add">Confirm create</button>
-    <div class="response_output" id="response_output">
+    <div class="edit_panel">
+        <button type="button" class="button_general button_update" id="btn_verify_add">Verify changes</button>
+        <button type="button" class="button_general button_update" id="btn_confirm_add">Confirm create</button>
+        <div class="response_output" id="response_output">
         <h4>Output</h4>
         <br>
         <div id="result_changes"></div>
     </div>
-
-    <style>
-        #myTable_info, 
-        .dt-layout-row .dt-paging, 
-        .dt-layout-row .dt-layout-cell,
-        .dt-layout-row .dt-length,
-        .dt-layout-row .dt-search{
-            display: none;
-        }
-    </style>
+    </div>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/table_responsive.css') }}">
+    
 </div>
 <script defer src="{{ url_for('static', filename='js/add_artist.js') }}"></script>
 {% endblock %}

@@ -16,9 +16,9 @@
                 <tr>
                     <!-- <th class="row_key">KEY</th> -->
                     <th>AKA</th>
-                    <th>Full name</th>
-                    <th>Date born</th>
-                    <th>Deah date</th>
+                    <th id="table_response_cell_fullname_th">Full name</th>
+                    <th id="table_response_cell_born_th">Date born</th>
+                    <th id="table_response_cell_death_th">Deah date</th>
                     <th>Country</th>
                 </tr>
             </thead>
@@ -27,9 +27,9 @@
                     <tr class="row_table_list_artist">
                         <!-- <td class="row_key">{{ row.artist_key}}</td> -->
                         <td>{{ row.artist_aka}}</td>
-                        <td>{{ row.artist_name}}</td>
-                        <td>{{ row.artist_dateborn}}</td>
-                        <td>{{ row.artist_deathdate}}</td>
+                        <td id="table_response_cell_fullname_td">{{ row.artist_name}}</td>
+                        <td id="table_response_cell_born_td">{{ row.artist_dateborn}}</td>
+                        <td id="table_response_cell_death_td">{{ row.artist_deathdate}}</td>
                         <td>{{ row.artist_country}}</td>
                     </tr>
                 {% endfor %}
@@ -97,15 +97,8 @@
             $('#myTable').DataTable();
         } );
     </script>
-    <style>
-        #myTable_info, 
-        .dt-layout-row .dt-paging, 
-        .dt-layout-row .dt-layout-cell,
-        .dt-layout-row .dt-length,
-        .dt-layout-row .dt-search{
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/table_responsive.css') }}">
+
     {% endif %}
 
     <!-- -------------------------------------- Table 3 ---------------------------------------- -->
@@ -143,14 +136,6 @@
         {% include 'edit_panel.html' %}
     {% endblock %}
     <script defer src="{{ url_for('static', filename='js/update_artist.js') }}"></script>
-    <style>
-        #myTable_info, 
-        .dt-layout-row .dt-paging, 
-        .dt-layout-row .dt-layout-cell,
-        .dt-layout-row .dt-length,
-        .dt-layout-row .dt-search{
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/table_responsive.css') }}">
     {% endif %}
 </div>

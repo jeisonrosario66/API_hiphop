@@ -1,0 +1,79 @@
+#myTable_info, 
+.dt-layout-row .dt-paging, 
+.dt-layout-row .dt-layout-cell,
+.dt-layout-row .dt-length,
+.dt-layout-row .dt-search{
+    display: none;
+}
+
+#myTable {
+    max-width: 360px !important;
+}
+
+.dataTable thead,
+.dataTable tbody {
+    width: 45vw 
+}
+
+.dt-column-order {
+    display: none;
+    }
+
+.dataTable thead tr th {
+    cursor: auto;
+}
+
+.dataTable tbody tr td {
+    background-color: #ececec;
+}
+
+table.dataTable th.dt-type-numeric,
+table.dataTable td.dt-type-numeric {
+    text-align: left;
+}
+
+.dataTable thead tr,
+.dataTable tbody tr {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.dataTable colgroup {
+    display: none;
+}
+
+table.dataTable {
+    display: flex;
+    justify-content: center;
+    width: auto !important;
+}
+
+.edit_panel {
+    width: 90vw;
+    max-width: 360px;
+    margin: auto;
+}
+
+@media only screen and (max-width: 599px) {
+    #myTable {
+        width: 360px;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .dataTable thead tr,
+    .dataTable tbody tr {
+        display: table-row
+    }
+
+    table.dataTable {
+        display: table;
+    }
+
+    .edit_panel {
+        max-width: 604px;
+    }
+}
+
