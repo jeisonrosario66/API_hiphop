@@ -8,9 +8,13 @@ Artist not found
 {% endblock %}
 
 {% block content %}
-<div class="container dynamic-content">
-    <h1>Response of request</h1>
-    <h3>Artist not found: {{artist_name}}</h3>
-    <h4></h4>
+<div style="text-align: center;" class="container dynamic-content">
+    {% block title_page %}
+        {% include 'title.html' %}
+    {% endblock %}
+    <div style="display: inline-block;">
+        <h1 class="text-center" id="title_h1">Artist not found: {{artist_name}}</h1>
+        <div style="width: 100%;" class="separator"></div>
+    </div>
 </div>
 {% endblock %}

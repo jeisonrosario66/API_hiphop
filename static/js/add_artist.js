@@ -62,7 +62,6 @@ function ajaxQuery(type, dataSent, param){
 
               document.getElementById("result_changes").innerHTML = resultMessage;
         },
-
     });
 };
 

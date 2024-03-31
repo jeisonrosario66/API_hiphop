@@ -2,18 +2,17 @@
 :root {
     --color-gray: #737789;
     --color-green: #16a085;
+    --font: 'Quicksand', sans-serif;
   }
 
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Quicksand', sans-serif;
+    font-family: var(--font)
 }
-
-.dataTable thead tr th,
-.dataTable tbody tr td{
-    height: 40px;
+body {
+    margin: 0 30px ;
 }
 
 .none {
@@ -33,7 +32,6 @@
 
 .logo_container {
     display: flex;
-    flex-direction: row;
     align-items: center;
     margin-right: 30px;
     cursor: pointer;
@@ -55,19 +53,33 @@ cursor: pointer;
 
 /* ********** navbar END ********** */
 
+
 /* ********** container ********** */
 
+.container {
+    margin-bottom: 50px;
+}
+
 .space {
-    /* width: 100vw; */
     height: 30px;
 }
-#title_h1 {
+.title_h1 {
     text-align: center;
+    margin: 0 auto;
     color: var(--color-green);
     font-weight: 500;
 }
 
+.title_container {
+    display: inline-block;
+}
+
+.title_container div{
+    width: 100%;
+}
+
 /* ********** container END ********** */
+
 
 /* ********** table list artists ********** */
 
@@ -89,12 +101,12 @@ cursor: pointer;
 }
 
 #table_container #myTable {
-    width: 550px !important;
+   width: 600px !important;
 }
 
-div.dt-container div.dt-layout-row  {
-}
+
 /* ********** table list artists END ********** */
+
 
 /* ********** table style ********** */
 .table_container {
@@ -108,7 +120,12 @@ div.dt-container div.dt-layout-row  {
     justify-content: center;
 }
 
+.dataTable thead tr th,
+.dataTable tbody tr td{
+    height: 40px;
+}
 /* ********** table style END ********** */
+
 
 /* ********** buttons ********** */
 .button_general {
@@ -136,12 +153,8 @@ div.dt-container div.dt-layout-row  {
 
 /* ********** buttons END ********** */
 
+
 /* ********** add artiss ********** */
-.add_artist_container {
-    max-width: 550px;
-    margin: auto;
-}
-/* ********** add artist END ********** */
 
 .response_output {
     border-radius: 8px;
@@ -149,33 +162,34 @@ div.dt-container div.dt-layout-row  {
     margin-top: 20px;
     padding: 5px;
 }
+/* ********** add artist END ********** */
 
+/* ********** responsive ********** */
 
-
-@media only screen and (max-width: 304px) {
-    .separator {
-        width: 100%;
-    }
-}
-
-@media only screen and (max-width: 340px) {
-    * {
-        overflow: auto;
-    }   
-    
-}
-@media only screen and (max-width: 412px) {
+@media only screen and (max-width: 290px) {
     * {
         overflow: auto;
     }
 }
 
-@media only screen and (max-width: 470px) {
-    
+
+@media only screen and (max-width: 360px) {
+    * {
+        font-size: 13px;
+    }
+
+    .title_h1 {
+        font-weight: 600;
+    }
 
     #table_container #myTable {
-        width: 260px !important;
+        width: 250px !important;
     }
+
+    #table_container #myTable colgroup col{
+        width: 0px !important;
+    }
+
     #table_response_cell_born_th,
     #table_response_cell_death_th,
     #table_response_cell_born_td,
@@ -184,15 +198,73 @@ div.dt-container div.dt-layout-row  {
     }
 }
 
-@media only screen and (min-width: 471px) and (max-width: 559px) {
+@media only screen and (min-width: 360px) and (max-width: 410px) {
+    #table_container #myTable {
+        width: 300px !important;
+    }
+
+    #table_container #myTable colgroup col{
+        width: 0px !important;
+    }
+
+    #table_response_cell_born_th,
+    #table_response_cell_death_th,
+    #table_response_cell_born_td,
+    #table_response_cell_death_td {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 410px) and (max-width: 460px) {
+    #table_container #myTable {
+        width: 350px !important;
+    }
+
+    #table_container #myTable colgroup col{
+        width: 0px !important;
+    }
+
+    #table_response_cell_born_th,
+    #table_response_cell_death_th,
+    #table_response_cell_born_td,
+    #table_response_cell_death_td {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 460px) and (max-width: 510px) {
+    #table_container #myTable {
+        width: 400px !important;
+
+    }
+
+    #table_container #myTable colgroup col{
+        width: 0px !important;
+    }
+
+    #table_response_cell_born_th,
+    #table_response_cell_death_th,
+    #table_response_cell_born_td,
+    #table_response_cell_death_td {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 510px) and (max-width: 560px) {
     #table_container #myTable {
         width: 450px !important;
     }
 }
 
-@media only screen and (min-width: 560px) and (max-width: 670px) {
+@media only screen and (min-width: 560px) and (max-width: 606px) {
     #table_container #myTable {
         width: 500px !important;
     }
 }
 
+@media only screen and (min-width: 606px) and (max-width: 670px) {
+    #table_container #myTable {
+        width: 550px !important;
+    }
+}
+/* ********** responsive END ********** */

@@ -5,6 +5,11 @@ const urlArtist = "/artist"; // url
 const urlAddArtist = "/add_artist"; // url
 const rowsTable = document.getElementsByClassName("row_table_list_artist");
 
+btnHome.addEventListener("click", function () {
+  window.location.href = "/";
+});
+// ---------------------------------------------------------------------------------------------
+
 function requestAjax(dataSent, url, type) {
   $.ajax({
     url: url,
@@ -50,30 +55,6 @@ window.addEventListener("popstate", function (event) {
       console.error("Error in the GET request:", error);
     },
   });
-});
-// ---------------------------------------------------------------------------------------------
-
-// Function to handle the submit form
-//  function handleFormSubmit(event) {
-  //  event.preventDefault(); // avoid the form submit
-  // If the input element is not empty -> request.AJAX
-  //  if ($("#search_input").val() !== "") {
-    // make an AJAX request to the server
-    //  let searchInput = $("#search_input").val();
-    //  requestAjax(searchInput, urlArtist, "POST");
-    
-    //  buildArtistUrl(searchInput);
-    //  location.reload();
-  //  }
-//  }
-// ---------------------------------------------------------------------------------------------
-
-// Will handle of managed the form submit, it will only do it after uploading the entire document
-//$(document).ready(function () {
-  //$("#form_search_navbar").submit(handleFormSubmit);
-//});
-btnHome.addEventListener("click", function () {
-  window.location.href = "/";
 });
 // ---------------------------------------------------------------------------------------------
 

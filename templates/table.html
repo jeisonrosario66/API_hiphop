@@ -6,9 +6,6 @@
     <!-- -------------------------------------- Table 1 ---------------------------------------- -->
     <!-- If "response" is received, then will show table list artist it show list all artists -->
     {% if (response) %}
-    <div class="title_response_request">
-
-    </div>
     <div class="space"></div>
     <div id="table_container" class="table">
         <table id="myTable" class="display">
@@ -38,10 +35,14 @@
     </div>
 
     <script>
+        // It apply 'datatable' framework in '#myTable"
         $(document).ready( function () {
             $('#myTable').DataTable();
         } );
 
+        // This function is in two files "table.html" and "ajax.html" 
+        // This solves a problem: 
+            //when going back in the url history the function "handleClickRow" no load
         function handleClickRow(param) {
             for (const row of param) {
               row.addEventListener("click", function () {
@@ -59,8 +60,6 @@
     <!-- -------------------------------------- Table 2 ---------------------------------------- -->
     <!-- If "response2" is received then, will show table artist it show only an artist -->
     {% if (response2) %}
-    <div class="title_response_request">
-    </div>
     <div class="space"></div>
     <div>
         <table id="myTable" class="display">
@@ -104,8 +103,6 @@
     <!-- -------------------------------------- Table 3 ---------------------------------------- -->
     <!-- If "response3" is received then, will show table artist it show only an artist | Method ["GET"] -->
     {% if (response3) %}
-    <div class="title_response_request">
-    </div>
     <div class="space"></div>
     <div>
         <table id="myTable" class="display">

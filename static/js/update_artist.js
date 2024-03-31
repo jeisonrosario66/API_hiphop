@@ -163,6 +163,7 @@ btnUpdate.addEventListener("click", function () {
       artist_deathdate: artist_datedeath_data,
       artist_country: rowCell[5].textContent,
     };
+
     btnUpdate.textContent = "Cancel edit";
     jsonDataUpdate = createJsonData(); // create json data
     btnEditState = true;
@@ -185,6 +186,23 @@ btnUpdate.addEventListener("click", function () {
 
     btnUpdate.textContent = "Edit artist";
     btnEditState = false;
+
+    let dataBorn = jsonDataOriginal["artist_dateborn"];
+    if (dataBorn === "") {
+      dataBorn = "None";
+    }
+  
+    let dataDeath = jsonDataOriginal["artist_deathdate"];
+    if (dataDeath === "") {
+      dataDeath = "None";
+    }
+
+    rowCell[1].textContent = jsonDataOriginal["artist_aka"]
+    rowCell[2].textContent = jsonDataOriginal["artist_name"]
+    rowCell[3].textContent = dataBorn
+    rowCell[4].textContent = dataDeath
+    rowCell[5].textContent = jsonDataOriginal["artist_country"]
+    
   }
 });
 

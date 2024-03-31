@@ -10,11 +10,9 @@
 <!-- "block content" It replaces the "block content" of the template base "base.html" and draw this new content "table.html" -->
 {% block content %}
 <div class="container">
-    
-        {% block table %} 
+    {% block table %} 
         {% include 'table.html' %}
-        {% endblock %}
-
+    {% endblock %}
 </div>
 {% endblock %}
 
