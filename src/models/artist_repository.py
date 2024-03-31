@@ -98,11 +98,11 @@ class ArtistRepository:
                         artist_deathdate = None
                     value = (
                         # 'artist key' is added when data is inserted into the database
-                        data_artist["artist_aka"],
-                        data_artist["artist_name"],
+                        data_artist["artist_aka"].lower(),
+                        data_artist["artist_name"].lower(),
                         artist_dateborn,
                         artist_deathdate,
-                        data_artist["artist_country"],
+                        data_artist["artist_country"].lower(),
                     )
                     cursor.execute(sql, value)
                     db_connection.commit()
@@ -121,11 +121,11 @@ class ArtistRepository:
         Returns:
             Returns: confirmation 'UPDATE' or exception
         """
-        artist_aka = jsonData["artist_aka"]
-        artist_name = jsonData["artist_name"]
+        artist_aka = jsonData["artist_aka"].lower()
+        artist_name = jsonData["artist_name"].lower()
         artist_dateborn = jsonData["artist_dateborn"]
         artist_deathdate = jsonData["artist_deathdate"]
-        artist_country = jsonData["artist_country"]
+        artist_country = jsonData["artist_country"].lower()
 
         
         if artist_dateborn == "":

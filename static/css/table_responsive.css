@@ -1,0 +1,280 @@
+#myTable {
+    max-width: 600px !important;
+}
+
+#myTable tbody tr td,
+#myTable thead tr th{
+    text-align: left;
+    overflow: auto;
+}
+
+#myTable_info, 
+.dt-layout-row .dt-paging, 
+.dt-layout-row .dt-layout-cell,
+.dt-layout-row .dt-length,
+.dt-layout-row .dt-search{
+    display: none;
+}
+
+.edit_panel,
+.edit_panel_template {
+    width: 100%;
+    max-width: 602px;
+    margin: 0 auto;
+}
+
+
+/* ********** responsive ********** */
+
+@media only screen and (max-width: 290px) {
+    * {
+        overflow: auto;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    #myTable {
+        width: 250px !important;
+    }
+
+    .dataTable thead tr,
+    .dataTable tbody tr {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .dt-column-order {
+        display: none;
+    }
+
+    .dataTable colgroup {
+        display: none;
+    }
+    
+    table.dataTable {
+        display: flex;
+        justify-content: center;
+        width: auto !important;
+    }
+
+    table.dataTable th.dt-type-numeric,
+    table.dataTable td.dt-type-numeric {
+        text-align: left;
+    }
+        
+    .dataTable thead,
+    .dataTable tbody {
+        width: 45vw 
+    }
+
+    .dataTable thead tr th {
+        cursor: auto;
+    }
+}
+
+@media only screen and (min-width: 360px) and (max-width: 410px) {
+    #myTable {
+        width: 300px !important;
+    }
+
+    .dataTable thead tr,
+    .dataTable tbody tr {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .dt-column-order {
+        display: none;
+    }
+
+    .dataTable colgroup {
+        display: none;
+    }
+    
+    table.dataTable {
+        display: flex;
+        justify-content: center;
+        width: auto !important;
+    }
+
+    table.dataTable th.dt-type-numeric,
+    table.dataTable td.dt-type-numeric {
+        text-align: left;
+    }
+        
+    .dataTable thead,
+    .dataTable tbody {
+        width: 45vw 
+    }
+
+    .dataTable thead tr th {
+        cursor: auto;
+    }
+}
+
+@media only screen and (min-width: 410px) and (max-width: 460px) {
+    #myTable {
+        width: 350px !important;
+    }
+
+    .dataTable thead tr,
+    .dataTable tbody tr {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .dt-column-order {
+        display: none;
+    }
+
+    .dataTable colgroup {
+        display: none;
+    }
+    
+    table.dataTable {
+        display: flex;
+        justify-content: center;
+        width: auto !important;
+    }
+
+    table.dataTable th.dt-type-numeric,
+    table.dataTable td.dt-type-numeric {
+        text-align: left;
+    }
+        
+    .dataTable thead,
+    .dataTable tbody {
+        width: 45vw 
+    }
+
+    .dataTable thead tr th {
+        cursor: auto;
+    }
+}
+
+@media only screen and (min-width: 460px) and (max-width: 510px) {
+    #myTable {
+        width: 400px !important;
+    }
+
+    .dataTable thead tr,
+    .dataTable tbody tr {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .dt-column-order {
+        display: none;
+    }
+
+    .dataTable colgroup {
+        display: none;
+    }
+    
+    table.dataTable {
+        display: flex;
+        justify-content: center;
+        width: auto !important;
+    }
+
+    table.dataTable th.dt-type-numeric,
+    table.dataTable td.dt-type-numeric {
+        text-align: left;
+    }
+        
+    .dataTable thead,
+    .dataTable tbody {
+        width: 45vw 
+    }
+
+    .dataTable thead tr th {
+        cursor: auto;
+    }
+}
+
+@media only screen and (min-width: 510px) and (max-width: 560px) {
+    #myTable {
+        width: 450px !important;
+    }
+    
+    .dataTable thead tr,
+    .dataTable tbody tr {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .dt-column-order {
+        display: none;
+    }
+
+    .dataTable colgroup {
+        display: none;
+    }
+    
+    table.dataTable {
+        display: flex;
+        justify-content: center;
+        width: auto !important;
+    }
+
+    table.dataTable th.dt-type-numeric,
+    table.dataTable td.dt-type-numeric {
+        text-align: left;
+    }
+        
+    .dataTable thead,
+    .dataTable tbody {
+        width: 45vw 
+    }
+
+    .dataTable thead tr th {
+        cursor: auto;
+    }
+}
+
+@media only screen and (min-width: 560px) and (max-width: 605px) {
+    #myTable {
+        width: 500px !important;
+    }
+
+    .dataTable thead tr,
+    .dataTable tbody tr {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .dt-column-order {
+        display: none;
+    }
+
+    .dataTable colgroup {
+        display: none;
+    }
+    
+    table.dataTable {
+        display: flex;
+        justify-content: center;
+        width: auto !important;
+    }
+
+    table.dataTable th.dt-type-numeric,
+    table.dataTable td.dt-type-numeric {
+        text-align: left;
+    }
+        
+    .dataTable thead,
+    .dataTable tbody {
+        width: 45vw 
+    }
+
+    .dataTable thead tr th {
+        cursor: auto;
+    }
+}
+
+@media only screen and (min-width: 606px) and (max-width: 670px) {
+    #myTable {
+        width: 550px !important;
+    }
+}
+/* ********** responsive END ********** */

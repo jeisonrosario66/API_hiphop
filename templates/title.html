@@ -1,16 +1,43 @@
-<div>
+<div style="text-align: center;">
     {% if (response) %}
-        <h1 class="text-center" id="title_h1">Artists List</h1>
+    <div class="title_container">
+        <h1 class="text-center title_h1">Artists List</h1>
         <div class="separator"></div>
+    </div>
     {% endif %}
 
     {% if (response2) %}
-        <h1 class="text-center" id="title_h1">Artist</h1>
-        <div style="width: 110px;" class="separator"></div>
+    <div class="title_container">
+        <h1 class="text-center title_h1">Artist</h1>
+        <div class="separator"></div>
+    </div>
     {% endif %}
 
     {% if (response3) %}
-        <h1 class="text-center" id="title_h1">Artist</h1>
-        <div style="width: 110px;" class="separator"></div>
+    <div class="title_container">
+        <h1 class="text-center title_h1">Artist</h1>
+        <div class="separator"></div>
+    </div>
+    {% endif %}
+
+    {% if (error404) %}
+        <div class="title_container">
+            <h1 class="text-center title_h1">Error 404</h1>
+            <div class="separator"></div>
+        </div>
+    {% endif %}
+
+    {% if (error405) %}
+    <div class="title_container">
+        <h1 class="text-center title_h1">Error 405</h1>
+        <div class="separator"></div>
+    </div>
+    {% endif %}
+
+    {% if (error500) %}
+    <div class="title_container">
+        <h1 class="text-center title_h1">Error 500</h1>
+        <div class="separator"></div>
+    </div>
     {% endif %}
 </div>

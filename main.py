@@ -9,27 +9,34 @@ from src.models.artist_controller import ArtistController
 app = Flask(__name__)
 artist_controller = ArtistController()
 
-
 @app.errorhandler(404)
 def handle_not_found(e):
-    return jsonify({"Error 404": f"{msg_exception(handle_not_found,e)}"}), 404
-
-@app.errorhandler(500)
-def handle_internal_server_error(e):
-    return jsonify({"Error 500": f"{msg_exception(handle_internal_server_error,e)}"}), 500
+    error404 = jsonify({"Error 404": f"{msg_exception(handle_not_found,e)}"}), 404
+    return render_template("not_found.html",error404 = error404)
 
 @app.errorhandler(405)
 def handle_not_found405(e):
-    return jsonify({"Error 405": f"{msg_exception(handle_internal_server_error,e)}"}), 405
+    error405 = jsonify({"Error 405": f"{msg_exception(handle_internal_server_error,e)}"}), 405
+    return render_template("not_found.html",error405 = error405)
+
+@app.errorhandler(500)
+def handle_internal_server_error(e):
+    error500 = jsonify({"Error 500": f"{msg_exception(handle_internal_server_error,e)}"}), 500
+    return render_template("not_found.html",error500 = error500)
 
 @app.route('/favicon.ico')
 def favicon():
     return app.send_static_file('favicon.ico')
 
-
 # ---------------------------------------------------------------------------------------------
 @app.route("/", methods=["GET", "POST"])
 def list_artists_show():
+    """
+    It show a list with  all artist 
+
+    Returns:
+       template flask
+    """
     # "requested_with" will get the header from the request
     requested_with = request.headers.get('X-Requested-With')
     response_got = artist_controller.list_artists()
@@ -42,9 +49,8 @@ def list_artists_show():
         return render_template("table.html",response = response_got)
     
 @app.route("/artist/<code>", methods=["GET"])
-def artist_show2(code):
-    """_summary_
-
+def artist_show(code):
+    """
     Args:
         code (str): this content a argument passed by url. Ej "artist/artis_name"
         It is received in this format "artist_name", then it is replace "_" -> " "
@@ -75,7 +81,7 @@ def artist_show2(code):
                 return render_template("artist_not_found.html", artist_name = artist_name)
 
 @app.route("/artist", methods=["POST"])
-def artist_show():
+def artist_show2():
     if request.method == "POST":
         artist_name = request.form["search"]
         response_got = artist_controller.get_artist(artist_name)
@@ -86,6 +92,10 @@ def artist_show():
 
 @app.route("/artist_update", methods=["PUT"])
 def artist_update():
+    """
+    Returns:
+        confirm data update
+    """
     if request.method == "PUT":
         if request.is_json:
             artist_data = request.get_json()
@@ -96,6 +106,8 @@ def artist_update():
         
 @app.route("/add_artist", methods=["GET", "POST"])
 def add_artist():
+    """Add a new artist
+    """
     requested_with = request.headers.get('X-Requested-With')
   
     if request.method == "GET":
@@ -121,4 +133,5 @@ def add_artist():
         return response_got
     
 if __name__ == "__main__":
-    app.run()
+    # Allows external connection in development
+    app.run(host="0.0.0.0")

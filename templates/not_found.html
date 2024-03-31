@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+<!-- added text to "block title" base   -->
+{% block title %}
+    {{ super() }}
+    Error Found
+{% endblock %}
+
+{% block content %}
+    {% if (error404) %}
+        {% block error404 %}
+            {% include 'title.html' %}
+        {% endblock %}
+    {% endif %}
+
+
+    {% if (error405) %}
+        {% block error405 %}
+            {% include 'title.html' %}
+        {% endblock %}
+    {% endif %}
+
+    {% if (error500) %}
+        {% block error500 %}
+            {% include 'title.html' %}
+        {% endblock %}
+    {% endif %}
+{% endblock %}
+
