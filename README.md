@@ -1,7 +1,7 @@
 
 # API_hiphop
 
-* It is a project with the objective of collect and organize much data the music RAP to expose it. In this first stage will show only data about artist
+* API_hip_hop is a project with the objective of collect and organize much data the music RAP to expose it. In this first stage will show only data about artist
 
 **App in production state**
 
