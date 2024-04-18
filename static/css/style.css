@@ -190,6 +190,11 @@ cursor: pointer;
     text-align: center; 
     margin-top: 50px;
 }
+
+#login_link_footer,
+#logout_link_footer {
+    cursor: pointer;
+}
 /* ********** footer END ********** */
 
 
