@@ -1,7 +1,37 @@
+<!-- templates/navbar.html -->
+
+{% if (session) %}
 <nav class="navbar_container">
-<div id="logo_container" class="logo_container">
-    <img id="logo" src="{{ url_for('static', filename='logo.png') }}" alt="">
-    <h3>HH Database</h3>
-</div>
-<h4 id="add_new_artist">Add Artist</h4>
+    <div id="logo_container" class="logo_container">
+        <img id="logo" src="{{ url_for('static', filename='logo.png') }}" alt="">
+        <div class="navbar_login_is_active">
+            <h3>HH Database</h3>
+            <h4>admin: {{session.user}}</h4>
+        </div>
+    </div>
+    <h4 id="add_new_artist">Add Artist</h4>
 </nav>
+<style>
+    .navbar_login_is_active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+    .navbar_login_is_active h4 {
+        position: relative;
+        font-weight: 400;
+        font-size: 12px;
+        top: 20px;
+        color: #16a085;
+    }
+</style>
+
+{% else %}
+<nav class="navbar_container">
+    <div id="logo_container" class="logo_container">
+        <img id="logo" src="{{ url_for('static', filename='logo.png') }}" alt="">
+        <h3>HH Database</h3>
+    </div>
+</nav>
+{% endif %}

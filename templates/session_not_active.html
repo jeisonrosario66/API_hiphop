@@ -1,0 +1,14 @@
+<!-- templates/session_not_active.html -->
+
+{% extends 'base.html' %}
+    <!-- added text to "block title" base   -->
+{% block title %}
+    {{ super() }}
+    Login need
+{% endblock %}
+
+{% block content %}
+    <div class="title_container">
+        <h1  class="text-center title_h1">You need to login to access this content</h1>
+    </div>
+{% endblock %}
