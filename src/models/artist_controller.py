@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
-from flask import Flask
 from flask import jsonify
-from flask import request
 from src.models.artist_repository import ArtistRepository
-from flask import Flask, render_template
 
 class ArtistController:
     def __init__(self):

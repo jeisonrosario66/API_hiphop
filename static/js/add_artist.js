@@ -77,7 +77,7 @@ btnVerifyAdd.addEventListener("click", function () {
 btnConfirmAdd.addEventListener("click", function() {
     jsonDataUpdate = createJsonData();
 
-    let artistName = jsonDataUpdate["artist_aka"]
+    // let artistName = jsonDataUpdate["artist_aka"]
 
     response = ajaxQuery("POST", jsonDataUpdate, "popstate_event")
 });
