@@ -1,4 +1,3 @@
-from flask import request
 from src.database.db_connect import create_db_connection
 from src.database.db_connect import close_db_connection
 from src.errors_handling.msg_exception import msg_exception

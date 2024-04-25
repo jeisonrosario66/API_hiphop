@@ -2,3 +2,4 @@ Flask
 mysql-connector-python
 pre-commit
 python-decouple
+passlib

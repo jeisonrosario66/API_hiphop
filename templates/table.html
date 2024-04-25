@@ -65,7 +65,7 @@
         <table id="myTable" class="display">
             <thead>
                 <tr>
-                    <th class="">KEY</th>
+                    <th>KEY</th>
                     <th>AKA</th>
                     <th>Full name</th>
                     <th>Date born</th>
@@ -86,10 +86,12 @@
         </table>
     </div>
 
-    {% block edit_panel %}
-        {% include 'edit_panel.html' %}
-    {% endblock %}
-
+    {% if (session) %}
+        {% block edit_panel %}
+            {% include 'edit_panel.html' %}
+        {% endblock %}
+    {% endif %}
+    
     <script defer src="{{ url_for('static', filename='js/update_artist.js') }}"></script>
     <script>
         $(document).ready( function () {
@@ -99,40 +101,3 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/table_responsive.css') }}">
 
     {% endif %}
-
-    <!-- -------------------------------------- Table 3 ---------------------------------------- -->
-    <!-- If "response3" is received then, will show table artist it show only an artist | Method ["GET"] -->
-    {% if (response3) %}
-    <div class="space"></div>
-    <div>
-        <table id="myTable" class="display">
-            <thead>
-                <tr>
-                    <th>KEY</th>
-                    <th>AKA</th>
-                    <th>Full name</th>
-                    <th>Date born</th>
-                    <th>Deah date</th>
-                    <th>Country</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="artist_td" id="artistKey" style="border-bottom: 0" >{{ response3.artist_key}}</td>
-                    <td class="artist_td" id="artistAka">{{ response3.artist_aka}}</td>
-                    <td class="artist_td" id="artistName">{{ response3.artist_name}}</td>
-                    <td class="artist_td" id="artist_date_born">{{ response3.artist_dateborn}}</td>
-                    <td class="artist_td" id="artist_date_death">{{ response3.artist_deathdate}}</td>
-                    <td class="artist_td" id="artistCountry">{{ response3.artist_country}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    {% block edit_panel2 %}
-        {% include 'edit_panel.html' %}
-    {% endblock %}
-    <script defer src="{{ url_for('static', filename='js/update_artist.js') }}"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/table_responsive.css') }}">
-    {% endif %}
-</div>

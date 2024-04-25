@@ -16,10 +16,7 @@ let btnEditState = false;
 let jsonDataOriginal = {};
 let jsonDataUpdate = {};
 
-function isEmtpy(obj) {
-  return Object.keys(obj).length === 0;
-}
-
+// This function will create a json object with the data got from database
 function createJsonData() {
   let artist_dateborn_data = rowCell[3].children[0].value;
   let artist_deathdate_data = rowCell[4].children[0].value;
@@ -34,7 +31,9 @@ function createJsonData() {
   };
   return jsonData;
 }
+// -------------------------------------------------------------------
 
+// Convert table cell to inputs and vice versa
 function createInputElement(idTdDate, idInputElementCreated, elemtToRempalce) {
   let cell = document.getElementById(idTdDate);
 
@@ -84,6 +83,7 @@ function deteleteInputElement(idTdBorn, idTdDeath, jsonDataOriginal) {
   cellBorn.parentElement.replaceChild(tdElementBorn, cellBorn);
   cellDeath.parentElement.replaceChild(tdElementDeath, cellDeath);
 }
+// -------------------------------------------------------------------
 
 function btnConfirmFunction(responseServidor) {
   let hasChanged = false;
@@ -130,87 +130,99 @@ function ajax_btnConfirm() {
   });
 }
 
-btnUpdate.addEventListener("click", function () {
-  let artistKeyRowTable = document.getElementById("artistKey");
-  if (!btnEditState) {
-    // Create inputs type data inside table cell
-    createInputElement(cellBorn.id, "input_date_born", cellBorn);
-    createInputElement(cellDeath.id, "input_date_death", cellDeath);
+try {
+  btnUpdate.addEventListener("click", function () {
+    let artistKeyRowTable = document.getElementById("artistKey");
+    if (!btnEditState) {
+      // Create inputs type data inside table cell
+      createInputElement(cellBorn.id, "input_date_born", cellBorn);
+      createInputElement(cellDeath.id, "input_date_death", cellDeath);
 
-    // Add new styles
-    btnUpdate.classList.add("button_active");
-    for (let i = 0; i < rowCell.length; i++) {
-      // Add new style and attributes in each cell
-      rowCell[i].classList.add("td_editable");
-      rowCell[i].contentEditable = "true";
-    }
+      // Add new styles
+      btnUpdate.classList.add("button_active");
+      for (let i = 0; i < rowCell.length; i++) {
+        // Add new style and attributes in each cell
+        if (i == 1 || i == 2 || i == 5) {
+          /*
+          Index of list
+          1: artistAka
+          2: artistName
+          5: artistCountry
+          */
+          rowCell[i].classList.add("td_editable");
+          rowCell[i].contentEditable = "true";
+          }
+      }
 
-    // Delete styles None
-    btnVerify.classList.remove("none"); // Show the button "Verify changes"
-    btnConfirm.classList.remove("none"); // Show the button "Confirm update"
-    responseOutput.classList.remove("none"); // Show the window outout
-    artistKeyRowTable.contentEditable = "false"; // This is not a content editable
+      // Delete styles None
+      btnVerify.classList.remove("none"); // Show the button "Verify changes"
+      btnConfirm.classList.remove("none"); // Show the button "Confirm update"
+      responseOutput.classList.remove("none"); // Show the window outout
+      artistKeyRowTable.contentEditable = "false"; // This is not a content editable
 
-    // create an object Json whith the data
-    let artist_dateborn_data = rowCell[3].children[0].value;
-    let artist_datedeath_data = rowCell[4].children[0].value;
+      // create an object Json whith the data
+      let artist_dateborn_data = rowCell[3].children[0].value;
+      let artist_datedeath_data = rowCell[4].children[0].value;
 
-    jsonDataOriginal = {
-      artist_key: rowCell[0].textContent,
-      artist_aka: rowCell[1].textContent,
-      artist_name: rowCell[2].textContent,
-      artist_dateborn: artist_dateborn_data,
-      artist_deathdate: artist_datedeath_data,
-      artist_country: rowCell[5].textContent,
-    };
+      jsonDataOriginal = {
+        artist_key: rowCell[0].textContent,
+        artist_aka: rowCell[1].textContent,
+        artist_name: rowCell[2].textContent,
+        artist_dateborn: artist_dateborn_data,
+        artist_deathdate: artist_datedeath_data,
+        artist_country: rowCell[5].textContent,
+      };
 
-    btnUpdate.textContent = "Cancel edit";
-    jsonDataUpdate = createJsonData(); // create json data
-    btnEditState = true;
-  } else {
-    // Delete inputs type data inside table cell
-    deteleteInputElement(cellBorn.id, cellDeath.id, jsonDataOriginal);
+      btnUpdate.textContent = "Cancel edit";
+      jsonDataUpdate = createJsonData(); // create json data
+      btnEditState = true;
+    } else {
+      // Delete inputs type data inside table cell
+      deteleteInputElement(cellBorn.id, cellDeath.id, jsonDataOriginal);
 
-    // Delete styles
-    btnUpdate.classList.remove("button_active");
-    for (let i = 0; i < rowCell.length; i++) {
-      // Add new style and attributes in each cell
-      rowCell[i].classList.remove("td_editable");
-      rowCell[i].contentEditable = "false";
-    }
+      // Delete styles
+      btnUpdate.classList.remove("button_active");
+      for (let i = 0; i < rowCell.length; i++) {
+        // Add new style and attributes in each cell
+        rowCell[i].classList.remove("td_editable");
+        rowCell[i].contentEditable = "false";
+      }
 
-    // Add styles None
-    btnVerify.classList.add("none"); // Show the button "Verify changes"
-    btnConfirm.classList.add("none"); // Show the button "Confirm update"
-    responseOutput.classList.add("none"); // Show the window outout
+      // Add styles None
+      btnVerify.classList.add("none"); // Show the button "Verify changes"
+      btnConfirm.classList.add("none"); // Show the button "Confirm update"
+      responseOutput.classList.add("none"); // Show the window outout
 
-    btnUpdate.textContent = "Edit artist";
-    btnEditState = false;
+      btnUpdate.textContent = "Edit artist";
+      btnEditState = false;
 
-    let dataBorn = jsonDataOriginal["artist_dateborn"];
-    if (dataBorn === "") {
-      dataBorn = "None";
-    }
-  
-    let dataDeath = jsonDataOriginal["artist_deathdate"];
-    if (dataDeath === "") {
-      dataDeath = "None";
-    }
-
-    rowCell[1].textContent = jsonDataOriginal["artist_aka"]
-    rowCell[2].textContent = jsonDataOriginal["artist_name"]
-    rowCell[3].textContent = dataBorn
-    rowCell[4].textContent = dataDeath
-    rowCell[5].textContent = jsonDataOriginal["artist_country"]
+      let dataBorn = jsonDataOriginal["artist_dateborn"];
+      if (dataBorn === "") {
+        dataBorn = "None";
+      }
     
-  }
-});
+      let dataDeath = jsonDataOriginal["artist_deathdate"];
+      if (dataDeath === "") {
+        dataDeath = "None";
+      }
 
-btnVerify.addEventListener("click", function () {
-  btnConfirmFunction("");
-});
-
-btnConfirm.addEventListener("click", function () {
-  jsonDataUpdate = createJsonData();
-  ajax_btnConfirm();
-});
+      rowCell[1].textContent = jsonDataOriginal["artist_aka"]
+      rowCell[2].textContent = jsonDataOriginal["artist_name"]
+      rowCell[3].textContent = dataBorn
+      rowCell[4].textContent = dataDeath
+      rowCell[5].textContent = jsonDataOriginal["artist_country"]
+      
+    }
+  });
+  
+  btnVerify.addEventListener("click", function () {
+    btnConfirmFunction("");
+  });
+  
+  btnConfirm.addEventListener("click", function () {
+    jsonDataUpdate = createJsonData();
+    ajax_btnConfirm();
+  });
+} catch (error) {
+  // 
+}

@@ -1,0 +1,39 @@
+<!-- templates/login.html -->
+
+{% extends 'base.html' %}
+<!-- added text to "block title" base   -->
+{% block title %}
+{{ super() }}
+Login
+{% endblock %}
+
+{% block content %}
+<div class="login_container">
+    {% if (session) %}
+    <h1  class="text-center title_h1">There is already a session started</h1>
+    {% else %}
+    <h3>¿Are you admin?</h3>
+
+    <form method="POST" action="{{ url_for('login_verification') }}" id="login_form">
+        <input id="login_input_user" placeholder="User" type="text">
+        <input id="login_input_pass" placeholder="Password" type="password" name="" id="">
+        <div>
+            <button id="login_button" class="button_general" type="submit">Login</button>
+            <p class="none" id="login_log">Data incorrect</p>
+        </div>
+    </form>
+    {% endif %}
+
+
+    <style>
+        #login_link_footer {
+            display: none;
+        }
+
+        #login_log {
+            display: none;
+            color: red;
+        }
+    </style>
+</div>
+{% endblock %}
