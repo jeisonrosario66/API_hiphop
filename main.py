@@ -118,10 +118,14 @@ def add_artist():
     """
     if session.get('user'):
         requested_with = request.headers.get('X-Requested-With')
-    
         if request.method == "GET":
             if requested_with == "popstate_event":
                 artist_name = str(request.args.keys())
+                if artist_name == "dict_keys([])":
+                    # If is true, mean that the user has tried accessing from page navigation
+                    # 'window. addEventListener (" popstate ", function (event)' -> "Ajax.js" 
+                    # With this avoid a front end failure
+                    return render_template("add_artist.html")
                 artist_name = artist_name.replace("dict_keys(['{", "")
                 artist_name = artist_name.replace('"artistData":"', "")
                 artist_name = artist_name.replace("'])", "")
@@ -165,7 +169,6 @@ def login_verification():
 
 
     response_got = artist_controller.list_artists()
-    print(access_login)
     if access_login == 1:
         session["user"] = login_data_user
         return render_template("index.html",response = response_got)

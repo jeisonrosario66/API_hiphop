@@ -290,15 +290,29 @@ cursor: pointer;
     }
 }
 
-@media only screen and (min-width: 560px) and (max-width: 606px) {
+@media only screen and (min-width: 560px) and (max-width: 650px) {
     #table_container #myTable {
         width: 500px !important;
     }
 }
 
-@media only screen and (min-width: 606px) and (max-width: 670px) {
+@media only screen and (min-width: 650px) and (max-width: 670px) {
     #table_container #myTable {
         width: 550px !important;
     }
+}
+
+@media only screen and (min-width: 690px) {
+    /* This keeps a size stable and avoid overflow */
+    #artistAka {
+        max-width: 74.68px;
+    }
+    #artistName {
+        max-width: 81.8px;
+    }
+    #artistCountry {
+        max-width: 101.34px;
+    }
+
 }
 /* ********** responsive END ********** */

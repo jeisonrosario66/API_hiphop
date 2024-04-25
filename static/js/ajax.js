@@ -61,6 +61,7 @@ window.addEventListener("popstate", function (event) {
     type: "GET",
     success: function (response) {
       $("#dynamic-content").html(response);
+      location.reload();
     },
     error: function (error) {
       console.error("Error in the GET request:", error);

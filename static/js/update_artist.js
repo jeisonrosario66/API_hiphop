@@ -142,8 +142,16 @@ try {
       btnUpdate.classList.add("button_active");
       for (let i = 0; i < rowCell.length; i++) {
         // Add new style and attributes in each cell
-        rowCell[i].classList.add("td_editable");
-        rowCell[i].contentEditable = "true";
+        if (i == 1 || i == 2 || i == 5) {
+          /*
+          Index of list
+          1: artistAka
+          2: artistName
+          5: artistCountry
+          */
+          rowCell[i].classList.add("td_editable");
+          rowCell[i].contentEditable = "true";
+          }
       }
 
       // Delete styles None
