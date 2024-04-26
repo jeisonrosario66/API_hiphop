@@ -47,11 +47,22 @@ class ArtistRepository:
         Returns:
             Dictionary: artist data got
         """
+        code = code
         try:
             db_connection = create_db_connection()
             if db_connection:
                 with db_connection.cursor() as cursor:
-                    sql = "SELECT * FROM artist_table WHERE artist_aka = (%s)"
+                    # With this block user input can be an INT or STR and will  processed correctly
+                    try:
+                        code = int(code)
+                        sql = "SELECT * FROM artist_table WHERE artist_key = (%s)"
+                        
+                    except ValueError as e:
+                        for i in code:
+                            if i == "_":
+                                code = code.replace("_", " ")
+                        sql = "SELECT * FROM artist_table WHERE artist_aka = (%s)"
+                        
                     cursor.execute(sql, (code,))
                     data_got = cursor.fetchone()
 

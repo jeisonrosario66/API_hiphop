@@ -31,6 +31,7 @@ class ArtistController:
         # "search" it is an attribute of the element "input" in "navbar.html or the artist name obtained event click in the table row
         # this receives the data necessary to make the request
         response = self.artist_repository.get_artist(artist_name)
+
         if not response == None:
             return response
 

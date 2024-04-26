@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
+from flask import jsonify
 from flask import Flask, request, session
 from flask import jsonify
 from flask import Flask, render_template
@@ -15,6 +16,7 @@ app.secret_key = os.urandom(24)
 artist_controller = ArtistController()
 login_controller = LoginController()
 
+# --------------------------------- error handling ------------------------------------------
 @app.errorhandler(404)
 def handle_not_found(e):
     error404 = jsonify({"Error 404": f"{msg_exception(handle_not_found,e)}"}), 404
@@ -33,8 +35,9 @@ def handle_internal_server_error(e):
 @app.route('/favicon.ico')
 def favicon():
     return app.send_static_file('favicon.ico')
-
 # ---------------------------------------------------------------------------------------------
+
+# -------------------------------- interface handler ------------------------------------------
 @app.route("/", methods=["GET", "POST"])
 def list_artists_show():
     """
@@ -180,7 +183,33 @@ def logout():
     response_got = artist_controller.list_artists()
     session.pop('user', None)
     return render_template("index.html",response = response_got)
+# ---------------------------------------------------------------------------------------------
 
+# ----------------------- API | expone data in JSON format-------------------------------------
+@app.route("/api/artists", methods=["GET"])
+def api_list_artists():
+    """
+    It show a list with all artists data in json format 
+
+    Return:
+       data in JSON format
+    """
+    response_got = artist_controller.list_artists()
+    return response_got
+
+@app.route("/api/artist/<code>", methods=["GET"])
+def api_artist(code):
+    """
+    It show only artis data in json format 
+
+    Return:
+       data in JSOM format
+    """
+    response_got = artist_controller.get_artist(code)
+    if response_got != None:
+        return response_got
+    else:
+        return jsonify({code: "Artist not found"})
     
 if __name__ == "__main__":
     # Allows external connection in development
